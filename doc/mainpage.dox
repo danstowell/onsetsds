@@ -19,7 +19,7 @@ applications in mind.
 <h2>Download</h2>
 
 <ul>
-	<li><a href="http://sourceforge.net/">Download the sourcecode bundle</a></li>
+	<li><a href="https://sourceforge.net/project/showfiles.php?group_id=210998">Download the sourcecode bundle</a></li>
 	<li>Or access the current development version using subversion [<small><a href="http://sourceforge.net/svn/?group_id=54622" title="What is subversion, and how to use it">info</a></small>]: <br />
 	  <tt>svn co %https://onsetsds.svn.sourceforge.net/svnroot/onsetsds onsetsds</tt></li>
 </ul>
@@ -81,7 +81,6 @@ Relevant publications:
 \li D. Stowell and M. D. Plumbley. 
 <a href="http://www.elec.qmul.ac.uk/digitalmusic/papers/2007/StowellPlumbley07-icmc.pdf">
 Adaptive whitening for improved real-time audio onset detection.</a> 
-To appear in: 
 Proceedings of the International Computer Music Conference (ICMC'07), 
 Copenhagen, Denmark, August 2007.
 
