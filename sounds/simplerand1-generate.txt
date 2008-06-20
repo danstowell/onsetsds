@@ -1,0 +1,5 @@
+s.boot;
+x = {LPF.ar(Pulse.ar(TIRand.kr(63,75,Impulse.kr(2)).midicps), LFNoise2.kr(0.5).exprange(100, 10000)) * Saw.ar(2).range(0, 1) * 0.5}.play;
+x.free;
+
+(0, 0.5 .. 16.5).collect(_.postln)

@@ -1,0 +1,29 @@
+
+ ----------------------------------------------------------
+ OnsetsDS
+ 
+ Musical onset detection library
+ (c) 2007 Dan Stowell
+ Made available under the GPL v2 - see COPYING for details.
+ ----------------------------------------------------------
+
+
+
+USAGE
+
+If your system can provide frequency-domain data (e.g. by performing FFT on the
+input audio), then to perform onset detection you only need onsetsds.h and 
+onsetsds.c. These need no additional libraries beyond the standard C libraries.
+
+If you aren't already doing the FFT then you can also use onsetsdshelpers.c
+and onsetsdshelpers.h, which can process raw audio, from a buffer or from a 
+file. These require two additional libraries:
+
+ * libsndfile - I used version 1.0.17
+   http://www.meganerd.com/libsndfile
+   
+ * FFTW 3 (floating-point version) - I used version 3.1.2
+   http://www.fftw.org 
+
+See the HTML documentation for a worked example.
+

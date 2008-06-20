@@ -1,0 +1,93 @@
+/** \mainpage OnsetsDS - real time musical onset detection C/C++ library
+
+<small>Copyright (c) 2007 Dan Stowell (Published under the GNU Public License v2). 
+http://onsetsds.sourceforge.net/</small>
+	
+<h2>Introduction</h2>
+
+The purpose of %OnsetsDS is to provide capabilities for FFT-based onset 
+detection that works very efficiently in real-time, and can detect onsets 
+pretty well in a broad variety of musical signals, with a fast reaction 
+time.
+
+It is not specialised for any particular type of signal. Nor is it 
+particularly tailored towards non-real-time use (if we were working in 
+non-real-time there are extra things we could do to improve the precision). 
+Its efficiency and fast reaction are designed with general real-time musical
+applications in mind.
+
+<h2>Download</h2>
+
+<ul>
+	<li><a href="http://sourceforge.net/">Download the sourcecode bundle</a></li>
+	<li>Or access the current development version using subversion [<small><a href="http://sourceforge.net/svn/?group_id=54622" title="What is subversion, and how to use it">info</a></small>]: <br />
+	  <tt>svn co %https://onsetsds.svn.sourceforge.net/svnroot/onsetsds onsetsds</tt></li>
+</ul>
+
+<h2>Typical usage</h2>
+
+\code
+
+// This example uses the recommended settings of an FFT size of 512 (@44.1kHz),
+// and a median span of 11. It also uses the "rectified complex deviation"
+// onset detection function - your choice of function may be down to taste,
+// or to performance on the particular type of sound you're using.
+
+#include "onsetsds.h"
+
+// An instance of the OnsetsDS struct, declared/allocated somewhere in your code,
+// however you want to do it.
+OnsetsDS ods;
+
+
+///////// (1) INITIALISATION: /////////
+
+// Allocate contiguous memory using malloc or whatever is reasonable.
+float* odsdata = (float*) malloc( onsetsds_memneeded(odftype, 512, 11) );
+
+// There are various types of onset detector available, we must choose one
+odftype = ODS_ODF_RCOMPLEX;
+
+// Now initialise the OnsetsDS struct and its associated memory
+onsetsds_init(ods, odsdata, ODS_FFT_FFTW3_HC, odftype, 512, 11);
+
+
+///////// (2) EXECUTION:      /////////
+
+bool onset;
+while(running){
+   // Grab your 512-point, 50%-overlap, nicely-windowed FFT data, into "fftdata"
+   
+   // Then detect. "onset" will be true when there's an onset, false otherwise
+   onset = onsetsds_process(ods, fftdata);
+}
+
+
+///////// (3) TIDYING UP:     /////////
+
+free(ods->data); // Or free(odsdata), they point to the same thing in this case
+
+\endcode
+
+<h2>Research background</h2>
+
+%OnsetsDS is based on research into musical onset detection
+carried out by Dan Stowell, with Dr Mark Plumbley, at 
+Queen Mary University of London's 
+<a href="http://www.elec.qmul.ac.uk/digitalmusic/">Centre for Digital Music</a>.
+
+Relevant publications:
+
+\li D. Stowell and M. D. Plumbley. 
+<a href="http://www.elec.qmul.ac.uk/digitalmusic/papers/2007/StowellPlumbley07-icmc.pdf">
+Adaptive whitening for improved real-time audio onset detection.</a> 
+To appear in: 
+Proceedings of the International Computer Music Conference (ICMC'07), 
+Copenhagen, Denmark, August 2007.
+
+The research stands on the shoulders of other onset detection research, and uses
+some concepts from that research - see the ICMC'07 paper and its bibliography
+for more details.
+
+
+*/

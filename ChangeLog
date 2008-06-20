@@ -1,0 +1,6 @@
+2008-06  Dan Stowell
+    * Fix bug in ODS_FFT_FFTW3_R2C case, thanks to both Wang Yue and Chris Cannam for spotting it
+
+2007-11  Dan Stowell
+    * Significant refactoring from v0.1, which was a set of SuperCollider UGens.
+    * VERSION: 0.2.0
