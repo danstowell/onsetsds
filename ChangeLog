@@ -1,3 +1,6 @@
+2011-02  Dan Stowell
+    * Add matlab/octave wrapper
+
 2008-06  Dan Stowell
     * Fix bug in ODS_FFT_FFTW3_R2C case, thanks to both Wang Yue and Chris Cannam for spotting it
 

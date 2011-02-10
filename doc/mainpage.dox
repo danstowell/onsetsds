@@ -16,6 +16,9 @@ non-real-time there are extra things we could do to improve the precision).
 Its efficiency and fast reaction are designed with general real-time musical
 applications in mind.
 
+(Added Feb 2011: matlab/octave wrapper, an offline function onsetsds() which can
+be applied to a matrix of fft data)
+
 <h2>Download</h2>
 
 <ul>
