@@ -59,9 +59,9 @@ extern "C" {
 * data comes from in order to interpret it correctly.
 */
 enum onsetsds_fft_types {
-	ODS_FFT_SC3_COMPLEX,	  ///< SuperCollider, cartesian co-ords ("SCComplexBuf") - NB it's more efficient to provide polar data from SC
-	ODS_FFT_SC3_POLAR,	  ///< SuperCollider, polar co-ords ("SCPolarBuf")
-	ODS_FFT_FFTW3_HC, ///< FFTW <a href="http://www.fftw.org/fftw3_doc/The-Halfcomplex_002dformat-DFT.html">"halfcomplex"</a> format 
+	ODS_FFT_SC3_COMPLEX,	  ///< SuperCollider, cartesian co-ords ("SCComplexBuf") [dc, nyq, real[1], imag[1], real[2], imag[2]...] - NB it's more efficient to provide polar data from SC
+	ODS_FFT_SC3_POLAR,	  ///< SuperCollider, polar co-ords ("SCPolarBuf") [dc, nyq, mag[1], phase[1], mag[2], phase[2]...]
+	ODS_FFT_FFTW3_HC, ///< FFTW <a href="http://www.fftw.org/fftw3_doc/The-Halfcomplex_002dformat-DFT.html">"halfcomplex"</a> format - [dc, real[1], real[2] ... nyq, imag[nyq-1] ... imag[1]]
 	ODS_FFT_FFTW3_R2C   ///< FFTW regular format, typically produced using <a href="http://www.fftw.org/fftw3_doc/One_002dDimensional-DFTs-of-Real-Data.html#One_002dDimensional-DFTs-of-Real-Data">real-to-complex</a> transform
 };
 

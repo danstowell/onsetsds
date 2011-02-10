@@ -42,24 +42,24 @@ OnsetsDS ods;
 
 ///////// (1) INITIALISATION: /////////
 
-// Allocate contiguous memory using malloc or whatever is reasonable.
-float* odsdata = (float*) malloc( onsetsds_memneeded(odftype, 512, 11) );
-
 // There are various types of onset detector available, we must choose one
 odftype = ODS_ODF_RCOMPLEX;
 
+// Allocate contiguous memory using malloc or whatever is reasonable.
+float* odsdata = (float*) malloc( onsetsds_memneeded(odftype, 512, 11) );
+
 // Now initialise the OnsetsDS struct and its associated memory
-onsetsds_init(ods, odsdata, ODS_FFT_FFTW3_HC, odftype, 512, 11);
+onsetsds_init(&ods, odsdata, ODS_FFT_FFTW3_HC, odftype, 512, 11, 44100.f);
 
 
 ///////// (2) EXECUTION:      /////////
 
 bool onset;
 while(running){
-   // Grab your 512-point, 50%-overlap, nicely-windowed FFT data, into "fftdata"
+   // Grab your 512- or 1024-point, 50%-overlap, nicely-windowed FFT data, into "fftdata"
    
    // Then detect. "onset" will be true when there's an onset, false otherwise
-   onset = onsetsds_process(ods, fftdata);
+   onset = onsetsds_process(&ods, fftdata);
 }
 
 
