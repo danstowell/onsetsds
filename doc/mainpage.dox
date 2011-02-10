@@ -22,7 +22,7 @@ be applied to a matrix of fft data)
 <h2>Download</h2>
 
 <ul>
-	<li><a href="https://sourceforge.net/project/showfiles.php?group_id=210998">Download the sourcecode bundle</a></li>
+	<li><a href="https://sourceforge.net/projects/onsetsds/files/onsetsds/OnsetsDS-source/">Download the sourcecode bundle</a></li>
 	<li>Or access the current development version using subversion [<small><a href="http://sourceforge.net/svn/?group_id=54622" title="What is subversion, and how to use it">info</a></small>]: <br />
 	  <tt>svn co %https://onsetsds.svn.sourceforge.net/svnroot/onsetsds onsetsds</tt></li>
 </ul>
@@ -43,7 +43,7 @@ be applied to a matrix of fft data)
 OnsetsDS ods;
 
 
-///////// (1) INITIALISATION: /////////
+//-/////// (1) INITIALISATION: ///////-//
 
 // There are various types of onset detector available, we must choose one
 odftype = ODS_ODF_RCOMPLEX;
@@ -55,7 +55,7 @@ float* odsdata = (float*) malloc( onsetsds_memneeded(odftype, 512, 11) );
 onsetsds_init(&ods, odsdata, ODS_FFT_FFTW3_HC, odftype, 512, 11, 44100.f);
 
 
-///////// (2) EXECUTION:      /////////
+//-/////// (2) EXECUTION:      ///////-//
 
 bool onset;
 while(running){
@@ -66,7 +66,7 @@ while(running){
 }
 
 
-///////// (3) TIDYING UP:     /////////
+//-/////// (3) TIDYING UP:     ///////-//
 
 free(ods->data); // Or free(odsdata), they point to the same thing in this case
 

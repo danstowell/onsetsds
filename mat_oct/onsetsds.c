@@ -79,26 +79,16 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
 			packeddata[j+j+1] = (float) imag[frameoffset + j];
 		}
 		bool onset = onsetsds_process(&ods, packeddata);
-//		printf("%i ", onset);
-//		printf("[%i] %i", i, onset);
 		results[i] = (onset ? 1.0 : 0.0);
-//		printf("[%i] %g", i, results[i]);
 	}	
 	
 	// Copy the results from double-array into matlab format
-//	mwSize *dims = (mwSize*) mxCalloc(2, sizeof(mwSize));
-//	dims[0] = 1;
-//	dims[1] = numframes;
-//	mxArray *resultsM = mxCreateNumericArray(2, dims, mxINT8_CLASS, mxREAL);
 	mxArray *resultsM = mxCreateDoubleMatrix(1,numframes,mxREAL);
-//	mxSetPr(resultsM, results);
 	memcpy(mxGetPr(resultsM), results, numframes * sizeof(double));
 	plhs[0] = resultsM;
 	
 	// destroy the ods correctly, and any matlabby things that need to go too.
 	free(ods.data);
 	free(packeddata);
-//	mxFree(dims);
 	mxFree(results);
-	// *resultsM ? no I think that lives on in matlabworld
 }
