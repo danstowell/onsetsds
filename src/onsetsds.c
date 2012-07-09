@@ -24,8 +24,7 @@
 #define ODS_DEBUG_POST_CSV 0
 
 // Inline
-inline float onsetsds_phase_rewrap(float phase);
-inline float onsetsds_phase_rewrap(float phase){
+static inline float onsetsds_phase_rewrap(float phase){
 	return (phase>MINUSPI && phase<PI) ? phase : phase + TWOPI * (1.f + floorf((MINUSPI - phase) * INV_TWOPI));
 }
 
