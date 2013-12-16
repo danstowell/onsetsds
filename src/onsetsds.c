@@ -327,7 +327,7 @@ void onsetsds_odf(OnsetsDS* ods){
 	bool rectify = true;
 	
 	// Here we shunt the "old" ODF values down one place
-	memcpy(val + 1, val, (ods->medspan - 1)*sizeof(float));
+	memmove(val + 1, val, (ods->medspan - 1)*sizeof(float));
 	
 	// Now calculate a new value and store in ods->odfvals[0]
 	switch(ods->odftype){
