@@ -166,6 +166,8 @@ typedef struct OnsetsDS {
 * accompany the OnsetsDS struct, operating using the specified settings (used to 
 * store part-processed FFT data etc). The user must 
 * call this, and then allocate the memory, BEFORE calling onsetsds_init().
+* The function returns -1 if the amount of memory cannot be determined (e.g. if 
+* "odfttype" is unrecognised), to indicate an error state.
 * @param odftype Which onset detection function (ODF) you'll be using, chosen from #onsetsds_odf_types
 * @param fftsize Size of FFT: 512 is recommended.
 * @param medspan The number of past frames that will be used for median calculation during triggering
