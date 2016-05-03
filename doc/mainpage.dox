@@ -46,7 +46,7 @@ OnsetsDS ods;
 //-/////// (1) INITIALISATION: ///////-//
 
 // There are various types of onset detector available, we must choose one
-odftype = ODS_ODF_RCOMPLEX;
+int odftype = ODS_ODF_RCOMPLEX;
 
 // Allocate contiguous memory using malloc or whatever is reasonable.
 float* odsdata = (float*) malloc( onsetsds_memneeded(odftype, 512, 11) );
